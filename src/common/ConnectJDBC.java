@@ -9,39 +9,54 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+import constant.Constant;
+
 /**
  * @author PhuQuoc
- * @since 30 thg 10, 2023
+ * @since 01 thg 06, 2024
  */
 public class ConnectJDBC {
 
-    public static Connection getConnection() {
-	final String USER = "sa";
-	final String PASSWORD = "123456";
-	final String URL = "jdbc:sqlserver://localhost:1433;databaseName=PassengerDB;user=" + USER + ";password="
-		+ PASSWORD;
-	Connection connection = null;
-	try {
-	    Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
-	    connection = DriverManager.getConnection(URL);
-	} catch (ClassNotFoundException | SQLException e) {
-	    e.printStackTrace();
-	}
-	return connection;
-    }
+	/**
+	 * connect jdbc
+	 * 
+	 * @return
+	 */
+	public static Connection getConnection() {
 
-    public static void close(ResultSet rs, PreparedStatement pre, Connection conn) throws SQLException {
+		final String URL = "jdbc:sqlserver://" + Constant.LOCAL_HOST + ";" + "databaseName=" + Constant.SCHEMA
+				+ ";user=" + Constant.USER + ";password=" + Constant.PASSWORD;
 
-	if (rs != null) {
-	    rs.close();
-	}
-
-	if (pre != null) {
-	    pre.close();
+		Connection connection = null;
+		try {
+			Class.forName(Constant.DRIVE_SQL);
+			connection = DriverManager.getConnection(URL);
+		} catch (ClassNotFoundException | SQLException e) {
+			e.printStackTrace();
+		}
+		return connection;
 	}
 
-	if (conn != null) {
-	    conn.close();
+	/**
+	 * close connect
+	 * 
+	 * @param rs
+	 * @param pre
+	 * @param conn
+	 * @throws SQLException
+	 */
+	public static void close(ResultSet rs, PreparedStatement pre, Connection conn) throws SQLException {
+
+		if (rs != null) {
+			rs.close();
+		}
+
+		if (pre != null) {
+			pre.close();
+		}
+
+		if (conn != null) {
+			conn.close();
+		}
 	}
-    }
 }

@@ -1,6 +1,6 @@
 package view;
 
-import common.ConnectJDBC;
+import controller.Controller;
 
 public class main {
 	
@@ -8,8 +8,7 @@ public class main {
 	 * 
 	 * @param args
 	 */
-	public static void main(String[] args) {
-		ConnectJDBC.getConnection();
-		System.out.println("END");
+	public static void main(final String[] args) {
+		Controller.menuMain();
 	}
 }
