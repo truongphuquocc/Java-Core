@@ -6,7 +6,6 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Scanner;
 
 import common.ConnectJDBC;
 import dao.PersonDAO;
@@ -17,7 +16,6 @@ public class PersonDAOImpl implements PersonDAO {
 	private Connection connection = null;
 	private PreparedStatement preparedStatement = null;
 	private ResultSet resultSet = null;
-	private Scanner scanner = new Scanner(System.in);
 
 	@Override
 	public List<Person> showAll() {

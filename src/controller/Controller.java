@@ -16,6 +16,7 @@ public class Controller {
 	 * 
 	 */
 	public static void menuMain() {
+		boolean flg = false;
 		try {
 			do {
 				System.out.println("1. Hiển thị tất cả: ");
@@ -24,11 +25,21 @@ public class Controller {
 				switch (choice) {
 				case "1":
 					showInformation(personDAO.showAll());
+					flg = true;
+					break;
+				case "2":
+					System.out.println("two");
+					flg = true;
+					break;	
+				case "3":
+					System.out.println("three");
+					flg = true;
 					break;
 				default:
+					flg = false;
 					break;
 				}
-			} while (true);
+			} while (flg);
 		} catch (Exception e) {
 			System.out.println(e);
 			e.printStackTrace();
@@ -40,7 +51,7 @@ public class Controller {
 	 * @param list
 	 */
 	private static void showInformation(List<Person> list) {
-		if (list == null || list.size() <= 0) {
+		if (list == null || list.isEmpty()) {
 			System.out.println("danh sách trống");
 		}else {
 			for (Person obj : list) {

@@ -2,7 +2,7 @@ package view;
 
 import controller.Controller;
 
-public class main {
+public class Main {
 	
 	/**
 	 * 
