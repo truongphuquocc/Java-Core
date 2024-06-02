@@ -22,6 +22,7 @@ local.properties
 
 # External tool builders
 .externalToolBuilders/
+.sonarlint
 
 # Locally stored "Eclipse launch configurations"
 *.launch
