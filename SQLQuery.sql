@@ -23,13 +23,7 @@ ORDER BY
     NV.MaNV DESC;
 
 -- cau 6 : 
---6a
-SELECT DISTINCT DiaChi
-FROM KHACHHANG;
--- 6b
-SELECT DiaChi
-FROM KHACHHANG
-GROUP BY DiaChi;
+
 -- Câu 6 sai: Khách hàng thân thiết là phải ít nhất mua hàng 1 lần ( Thiếu điều kiện)
 --Cach 1
 
@@ -39,36 +33,9 @@ SELECT DISTINCT kh.DiaChi FROM KhachHang kh LEFT JOIN HoaDon hd ON kh.MaKH = hd.
 
 SELECT kh.DiaChi FROM KhachHang kh LEFT JOIN HoaDon hd ON kh.MaKH = hd.MaKH WHERE hd.MaHD IS NOT NULL GROUP BY kh.DiaChi
 -- cau 7
-
-WITH TiviProducts AS (
-    SELECT MaSP
-    FROM SANPHAM SP
-    JOIN LOAISANPHAM LSP ON SP.MaLoaiSP = LSP.MaLoaiSP
-    WHERE LSP.TenLoaiSanPham = 'Tivi'
-),
-
-FirstHalfSales AS (
-    SELECT DISTINCT MaSP
-    FROM CHITIETHOADON CT
-    JOIN HOADON HD ON CT.MaHD = HD.MaHD
-    WHERE YEAR(HD.NgayThanhToan) = 2021 AND MONTH(HD.NgayThanhToan) BETWEEN 1 AND 6
-),
-
-SecondHalfSales AS (
-    SELECT DISTINCT MaSP
-    FROM CHITIETHOADON CT
-    JOIN HOADON HD ON CT.MaHD = HD.MaHD
-    WHERE YEAR(HD.NgayThanhToan) = 2021 AND MONTH(HD.NgayThanhToan) BETWEEN 7 AND 12
-)
-
-SELECT SP.*
-FROM SANPHAM SP
-JOIN TiviProducts TP ON SP.MaSP = TP.MaSP
-JOIN SecondHalfSales SHS ON SP.MaSP = SHS.MaSP
-WHERE SP.MaSP NOT IN (SELECT MaSP FROM FirstHalfSales);
+-----
 
 --========================================================
--- Làm dễ hiểu thôi
 SELECT sp.*
 FROM HoaDon hd
 JOIN ChiTietHoaDon ct ON hd.MaHD = ct.MaHD
@@ -148,6 +115,8 @@ WHERE SP.MaSP NOT IN (SELECT MaSP FROM NotSoldInQ32020)
 AND SP.MaSP IN (SELECT MaSP FROM SoldAtLeast4TimesIn2021);
 
 --============
+Tra ve nhung san pham ban trong nam 2021 tren 4 lan ban
+tra ve nhung san pham trong nam 2020 trong quy 3
 --===========================
 SELECT *
 FROM SanPham sp
@@ -175,7 +144,8 @@ SELECT s.MaLoaiSP, l.TenLoaiSanPham, SUM(s.GiaBan*ct.SoLuongBan) as DoanhThu
 FROM  LOAISANPHAM as l
 JOIN SANPHAM as s on l.MaLoaiSP = s.MaLoaiSP
 JOIN CHITIETHOADON as ct on ct.MaSP = s.MaSP
-Group by s.MaLoaiSP,  l.TenLoaiSanPham;
+Group by s.MaLoaiSP,  l.TenLoaiSanPham
+order by DoanhThu ASC;
 
 -- cau 12
 -- Find the employee who sold the most products in terms of quantity in 2021
@@ -227,7 +197,8 @@ from SANPHAM as S
 join CHITIETHOADON as ct on S.MaSP = ct.MaSP
 join LOAISANPHAM as l on S.MaLoaiSP = l.MaLoaiSP
 --==================================
-SELECT sp.MaSP,sp.TenSP,l.TenLoaiSanPham,(sp.SoLuongTrongKho-ct.SoLuongBan) FROM SanPham sp JOIN LoaiSanPham l ON sp.MaLoaiSP = l.MaLoaiSP JOIN 
+SELECT sp.MaSP,sp.TenSP,l.TenLoaiSanPham,(sp.SoLuongTrongKho-ct.SoLuongBan) 
+FROM SanPham sp JOIN LoaiSanPham l ON sp.MaLoaiSP = l.MaLoaiSP JOIN 
 (
 	SELECT sp.MaSP,(SUM(ct.SoLuongBan)) AS SoLuongBan
 	FROM ChiTietHoaDon ct JOIN SanPham sp ON ct.MaSP = sp.MaSP GROUP BY sp.MaSP
