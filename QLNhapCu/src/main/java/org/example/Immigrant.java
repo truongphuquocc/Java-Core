@@ -1,5 +1,8 @@
+package org.example;
 
+import java.util.Date;
 
+// Lớp trừu tượng Immigrant chứa các thuộc tính chung và các phương thức trừu tượng
 abstract class Immigrant {
     private String immigrantID;
     private String name;
@@ -53,5 +56,13 @@ abstract class Immigrant {
         return discountRate;
     }
 
-    public abstract String getInfo();
+    public void setDiscountRate(double discountRate) {
+        this.discountRate = discountRate;
+    }
+
+    // Phương thức trừu tượng để các lớp con cụ thể hoá
+    public abstract void showDetails();
 }
+
+
+

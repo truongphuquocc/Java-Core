@@ -1,3 +1,8 @@
+package org.example;
+
+import java.util.Date;
+
+// Lớp Traveler kế thừa từ lớp Immigrant
 class Traveler extends Immigrant {
     private String company;
     private String stayPlace;
@@ -17,7 +22,9 @@ class Traveler extends Immigrant {
     }
 
     @Override
-    public String getInfo() {
-        return "Traveler: " + getName() + ", Travel Company: " + getCompany() + ", Stay Place: " + getStayPlace();
+    public void showDetails() {
+        System.out.println("Traveler Details:");
+        System.out.println("Travel Company: " + company);
+        System.out.println("Stay Place: " + stayPlace);
     }
 }

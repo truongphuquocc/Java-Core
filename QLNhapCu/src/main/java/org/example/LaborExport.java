@@ -1,3 +1,7 @@
+package org.example;
+
+import java.util.Date;
+
 class LaborExport extends Immigrant {
     private String company;
     private String laborType;
@@ -17,7 +21,9 @@ class LaborExport extends Immigrant {
     }
 
     @Override
-    public String getInfo() {
-        return "Labor Export: " + getName() + ", Company: " + getCompany() + ", Labor Type: " + getLaborType();
+    public void showDetails() {
+        System.out.println("Labor Export Details:");
+        System.out.println("Company: " + company);
+        System.out.println("Labor Type: " + laborType);
     }
 }
