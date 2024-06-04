@@ -1,0 +1,11 @@
+﻿Type,ImmigrantID,Name,BirthDate,Passport,Nationlity,ImmigrantDate,StayLength,University,Majors,Company,LaborType,StayPlace,DiscountRate
+1,IM001,Nguyen Bao Anh,6/3/1983,36A5333532,Anh,11/5/2020,2 năm,Seoul,CNTT,,,,
+2,IM002,Pham Anh Minh,5/2/2018,ff4455rrrtgw,VietNam,6/15/2021,3 năm,,,Bảo Thịnh,Phổ thông,,
+3,IM003,Le Duong Phuc,10/3/1975,gfheke4444,Nhat,5/24/2020,6 tháng,,,SaiGonTourist,,Morin Hotel,
+1,IM004,Tran Cong Minh,4/4/1972,fjhi4444yw2,Phap,5/4/2021,2 năm,Osaka,Sinh học,,,,
+2,IM005,Tran Dinh Nghia,7/8/2015,kjsnw66666,Due,4/6/2021,2 năm,,,VINACO,Chuyên ngành,,
+3,IM006,Tran Gia Bao,3/15/1980,983492hfr,Y,7/8/2021,2 năm,,,Bến Thành,,Novotel Hotel,
+1,IM007,Nguyen Minh Phuong,6/7/1979,ehfi877778,Uc,12/4/2020,1 năm,Harvard,Vật lý,,,,
+2,IM008,Pham Ba Chau,4/5/2017,kdj2222njr9,Anh,6/3/2021,4 năm,,,VINACO,Phổ thông,,
+3,IM009,Tran Nhu Thu,6/9/1970,jfijf9euf77,Nhat,8/25/2021,3 tháng,,,TST,,Imperial Hotel,
+1,IM010,Nguyen Thi Thuy,4/2/1989,jifu9999933,Phap,9/25/2021,2 năm,Monash,Toán,,,,
